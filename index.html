@@ -383,7 +383,7 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
             sigCanvas.addEventListener('touchend', draw, false);
  
             // prevent elastic scrolling
-   document.addEventListener('touchmove', scroll, false); 
+   document.addEventListener('touchmove', function(event){ event.preventDefault();    }, false); 
          }
          else {
  
