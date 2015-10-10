@@ -63,7 +63,15 @@ function drawImageScaled_new(img2, ctx2) {
 	canvas1.width = window.innerWidth;
     ctx2.clearRect(0,0,canvas1.width, canvas1.height);
   ctx2.drawImage(img2, 0,0, canvas1.width, canvas1.height);
-onRotate(img2,ctx2);
+  
+  var message = "Rotate the picture...";
+ var return_value = confirm(message);
+ if ( return_value === true ) {
+        ctx2.rotate(90*Math.PI/180);
+        ctx2.drawImage(img2, 0, 0);
+   }
+tmp = ctx2.getImageData(0,0,canvas1.width, canvas1.height);
+
 }
 
 
