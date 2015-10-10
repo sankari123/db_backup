@@ -383,7 +383,7 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
             sigCanvas.addEventListener('touchend', draw, false);
  
             // prevent elastic scrolling
-   document.addEventListener('touchmove', function (event) { event.preventDefault(); }, false); 
+   document.addEventListener('touchmove', scroll, false); 
          }
          else {
  
@@ -428,7 +428,16 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
          $(sigCanvas).unbind("mousemove")
                      .unbind("mouseup")
                      .unbind("mouseout");
-      }   
+      } 
+      
+      var scroll = function(e) {
+    // compute state
+    if (stopScrollX || stopScrollY) {
+        e.preventDefault();              // this one is the key
+        e.stopPropagation();
+        window.scroll(scrollToX, scrollToY);
+    }
+}
 </script>
 	<style>
 	h1 {
