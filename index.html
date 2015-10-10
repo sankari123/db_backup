@@ -4,10 +4,6 @@
     <title>DG TEST</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-	<script type="text/javascript" src="sketch.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
 	<script>
   	var imgDataUrl;
 	var start = function() {
@@ -338,9 +334,9 @@ document.body.addEventListener('touchstart',function(event){event.preventDefault
         }
     }
 
-function sign_final()
-{
-	// create a drawer which tracks touch movements
+///new sign start here
+	
+// create a drawer which tracks touch movements
     var drawer = {
         isDrawing: false,
             touchstart: function(coors){
@@ -357,19 +353,14 @@ function sign_final()
             }
         },
         touchend: function(coors){
-
-
             if (this.isDrawing) {
                 context.lineTo(coors.x, coors.y);
                 current_stroke+= coors.x+','+coors.y+';';
                 context.stroke();
                 this.isDrawing = false;
-
-
             }
         }
     };  // end of drawer 
-
     // create a function to pass touch events and coordinates to drawer
     function draw(event){
         // get the touch coordinates
@@ -380,25 +371,47 @@ function sign_final()
         // pass the coordinates to the appropriate handler
         drawer[event.type](coors);
     }
+function sign_final()
+{
 
-
-
+$(document).ready(function() {
     // get the canvas element and its context
     canvas = document.getElementById('theCanvas');
     context = canvas.getContext('2d');
-    context.lineWidth = 2;
-    context.strokeStyle = 'blue';
-
+    context.lineWidth = 5;
+    context.strokeStyle = 'black';
     // attach the touchstart, touchmove, touchend event listeners.
     canvas.addEventListener('touchstart',draw, false);
     canvas.addEventListener('touchmove',draw, false);
     canvas.addEventListener('touchend',draw, false);
 
     // prevent elastic scrolling
-    document.body.addEventListener('touchmove',function(event){event.preventDefault();    },false);   // end body.onTouchMove
+    document.body.addEventListener('touchmove',function(event){
+        event.preventDefault();
+    },false);   // end body.onTouchMove
 
-
-
+});	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 </script>
 	<style>
