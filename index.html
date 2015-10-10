@@ -211,13 +211,11 @@ img11.src=imgg_url;
 function signPhoto()
 {
 canvas = document.getElementById('theCanvas');
-      
-        if (canvas.getContext)
-            ctx = canvas.getContext('2d');
+                       ctx = canvas.getContext('2d');
              
 
       
-        if (ctx) {
+        
 		    canvas.addEventListener('mousedown', theCanvas_mouseDown, false);
             canvas.addEventListener('mousemove', theCanvas_mouseMove, false);
             window.addEventListener('mouseup', theCanvas_mouseUp, false);
@@ -229,8 +227,8 @@ document.addEventListener('ontouchmove', function(e) {e.preventDefault()}, false
             canvas.addEventListener('touchend', theCanvas_touchEnd, false);
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
 
-        }
-		imgDataUrl = canvas.toDataURL();  
+        
+	
 		
 }
   var e=event;
