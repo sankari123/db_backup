@@ -384,8 +384,7 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
  
             // prevent elastic scrolling
    document.addEventListener('touchmove', function(event){ event.preventDefault();    }, false); 
-   $(document).bind( 'touchmove',  function(e) { e.preventDefault();      }
-);
+   $(document).bind( 'touchmove',  function(event) { event.preventDefault();      });
          }
          else {
  
@@ -446,7 +445,7 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
 body {
   height: 100%;
   width: 100%;
-  overflow: auto;
+  
 }
 	h1 {
 	font: 15pt vivaldi;
@@ -481,9 +480,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    overflow: scroll;
--webkit-overflow-scrolling: touch;
-}
+   }
   </style>
   </head>
   <body onload="start();">
