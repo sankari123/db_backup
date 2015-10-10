@@ -2,20 +2,26 @@
 <html>
   <head>
     <title>DG TEST</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+    <script type="text/javascript">
+            var dd = $.Deferred();
+            var jqd = $.Deferred();
+            $.when(dd, jqd).done(doInit);
+
+            $(document).bind('mobileinit', function () {
+                jqd.resolve();
+            });
+        </script>
+        
 	<script>
   	var imgDataUrl;
 	var start = function() {
     screen.orientation.lock('portrait');
       
     }
-	function signn()
-	{
-	$(document).ready(function(){
-                $('#canvas-display').paintBrush();
-                });
-  }
 
 	var rotate_condn;
     var canvas,ctx,ctx1;
@@ -32,7 +38,7 @@
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-	   
+	   dd.resolve();
     }
 
     
@@ -373,8 +379,6 @@ document.body.addEventListener('touchstart',function(event){event.preventDefault
     }
 function sign_final()
 {
-
-$(document).ready(function() {
     // get the canvas element and its context
     canvas = document.getElementById('theCanvas');
     context = canvas.getContext('2d');
@@ -387,31 +391,8 @@ $(document).ready(function() {
 
     // prevent elastic scrolling
     document.body.addEventListener('touchmove',function(event){
-        event.preventDefault();
-    },false);   // end body.onTouchMove
+        event.preventDefault();    },false);   // end body.onTouchMove
 
-});	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 </script>
 	<style>
