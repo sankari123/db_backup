@@ -80,6 +80,7 @@ function drawImageScaled(img, ctx) {
    canvas.height = window.innerHeight;
 	canvas.width = window.innerWidth;
   // ctx.clearRect(0,0,canvas.width, canvas.height);
+  ctx.restore();
   ctx.drawImage(img, 0,0, canvas.width, canvas.height);
 tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
  
@@ -228,7 +229,7 @@ document.addEventListener('ontouchmove', function(e) {e.preventDefault()}, false
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
 
         
-	
+	ctx.save();
 		
 }
   var e=event;
