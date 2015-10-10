@@ -316,67 +316,7 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
         }
     }
 
-///new sign start here
-	
-// create a drawer which tracks touch movements
-    var drawer = {
-        isDrawing: false,
-            touchstart: function(coors){
-            context.beginPath();
-            context.moveTo(coors.x, coors.y);
-            this.isDrawing = true;
-        },
-        touchmove: function(coors){
-            if (this.isDrawing) {
-                context.lineTo(coors.x, coors.y);
-                current_stroke+= coors.x+','+coors.y+';';
-                context.stroke();
 
-            }
-        },
-        touchend: function(coors){
-            if (this.isDrawing) {
-                context.lineTo(coors.x, coors.y);
-                current_stroke+= coors.x+','+coors.y+';';
-                context.stroke();
-                this.isDrawing = false;
-            }
-        }
-    };  // end of drawer 
-    // create a function to pass touch events and coordinates to drawer
-    function draw(event){
-        // get the touch coordinates
-      //  alert("draw");
-        var coors = {
-            x: event.targetTouches[0].pageX,
-            y: event.targetTouches[0].pageY
-        };
-        // pass the coordinates to the appropriate handler
-        drawer[event.type](coors);
-    }
-function sign_final()
-{
-    // get the canvas element and its context
-    canvas = document.getElementById('theCanvas');
-    context = canvas.getContext('2d');
-    context.lineWidth = 10;
-    context.strokeStyle = 'black';
-    // attach the touchstart, touchmove, touchend event listeners.
-  //  alert("in");
-    canvas.addEventListener('touchstart',draw, false);
-    canvas.addEventListener('touchmove',draw, false);
-    canvas.addEventListener('touchend',ended, false);
-
-    // prevent elastic scrolling
-    document.body.addEventListener('touchmove',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
-
-}
-function ended(){
-  /*  your code here */
-    }
-    
-    
-    
   function initialize1() {
          // get references to the canvas element as well as the 2D drawing context
          var sigCanvas = document.getElementById("theCanvas");
@@ -502,9 +442,8 @@ function ended(){
 	
  	.canvasStyle
 	{
-        position: fixed;
-		border: 1px #CCC solid;
-		cursor:crosshair ;
+       		border: 0px #CCC solid;
+	
 		
     }
 	.btncss
@@ -525,6 +464,7 @@ function ended(){
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-overflow-scrolling: touch;
 }
   </style>
   </head>
