@@ -213,11 +213,9 @@ function signPhoto()
 {
 canvas = document.getElementById('theCanvas');
                        ctx = canvas.getContext('2d');
-             
-
-      
-        
-		    canvas.addEventListener('mousedown', theCanvas_mouseDown, false);
+             canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth;
+            canvas.addEventListener('mousedown', theCanvas_mouseDown, false);
             canvas.addEventListener('mousemove', theCanvas_mouseMove, false);
             window.addEventListener('mouseup', theCanvas_mouseUp, false);
 
@@ -413,6 +411,7 @@ function write1()
     if (func) {
       func(ev);
     }
+    context.save();
   }
 
 
