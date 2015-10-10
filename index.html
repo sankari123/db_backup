@@ -1,198 +1,399 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>locateME@XPressAvenue</title>
-
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
+    <title>DigiGraph</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
-    // Wait for PhoneGap to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-    var watchID = null;
-    var place_name;
+	<script type="text/javascript" src="sketch.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+  	var imgDataUrl;
+	var start = function() {
+    screen.orientation.lock('portrait');
+      
+    }
+	function signn()
+	{
+	$(function() {
+    $('#theCanvas').sketch();
+  });
+  }
+
+	var rotate_condn;
+    var canvas,ctx,ctx1;
+    var mouseX,mouseY,mouseDown=0;
+    var touchX,touchY;
+    var lastX,lastY=-1;
+	var tmp;
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+	var myVar;
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    
     function onDeviceReady() {
-    	
-        
-    	//console.log(FileTransfer);
-    //	tx.executeSql('DROP TABLE IF EXISTS locateME');
-      //    tx.executeSql('CREATE TABLE IF NOT EXISTS locateME (data1,data2,data3)');
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+	   
     }
-function getloc()
-{
-//	alert("in");
-  var options = { enableHighAccuracy: true };
-        watchID = navigator.geolocation.watchPosition(onSuccess1, onError1, options);
-     //   alert("in");
-}
-var geo_loc;
-var geo_loc1;
-function onSuccess1(position) {
-//alert(position.coords.latitude);
-//alert(position.coords.longitude);
-	
-geo_loc = position.coords.latitude;
-   geo_loc1 = position.coords.longitude;
- document.getElementById('loc_txt').value=geo_loc;
-    document.getElementById('loc_txt1').value=geo_loc1;
-    }
-    function onError1(error) {
-          console.log('code: '    + error.code    +  'message: ' + error.message );
-        }
-        function placeloc()
-        {
-           place_name=document.getElementById("place_txt").value;
-     //     alert(place_name);
-        }
-        
-function saveloc()
-{
-	place_name=document.getElementById("place_txt").value;
-	var db = window.openDatabase("locateME", "1.0", "locateME DB", 200000);
-        db.transaction(populateDB, errorCB, successCB);
-//alert(geo_loc);
-//alert(geo_loc1);
-//alert(place_name);
-//alert(document.getElementById("place_txt").value);
+
+    
+    function onPhotoDataSuccess(imageData) {
+      
+	 
+   var c = document.getElementById("theCanvas");
+   var ctx = c.getContext("2d");
+   var img = new Image();
+
+         
+		// img.onload= drawImageScaled_new.bind(null, img, ctx);
+		  img.onload= drawImageScaled_new.bind(null, img, ctx);
+		 img.src = "data:image/jpeg;base64," + imageData;
+     
 }
 
-function populateDB(tx) {
-    tx.executeSql('DROP TABLE IF EXISTS locateME');
-     
-     //   tx.executeSql('INSERT INTO locateME VALUES ('"&geo_loc&"','"&geo_loc1&";)');
-     
+var imgg_url;
+
+
+function drawImageScaled_new(img2, ctx2) {
+   var canvas1 = ctx2.canvas ;
+   canvas1.height = window.innerHeight;
+	canvas1.width = window.innerWidth;
+    ctx2.clearRect(0,0,canvas1.width, canvas1.height);
+  ctx2.drawImage(img2, 0,0, canvas1.width, canvas1.height);
+onRotate(img2,ctx2);
+}
+
+
+function drawImageScaled(img, ctx) {
+   canvas = ctx.canvas ;
+   canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth;
+   ctx.clearRect(0,0,canvas.width, canvas.height);
+  ctx.drawImage(img, 0,0, canvas.width, canvas.height);
+tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
+ 
+}
+
+function drawImageScaled1(img, ctx) {
+   var canvas = ctx.canvas ;
+   var hRatio = canvas.width  / img.width    ;
+   var vRatio =  canvas.height / img.height  ;
+   var ratio  = Math.min ( hRatio, vRatio );
+   var centerShift_x = ( canvas.width - img.width*ratio ) / 2;
+   var centerShift_y = ( canvas.height - img.height*ratio ) / 2;  
+   ctx.clearRect(0,0,canvas.width, canvas.height);
+   ctx.drawImage(img, 0,0, img.width, img.height,
+                      centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);  
+					  tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
+}
+    function onPhotoURISuccess(imageURI) {
+	    var c = document.getElementById("theCanvas");
+		var ctx = c.getContext('2d');
+	    var img = new Image();
+
   
-        var sql='INSERT INTO locateME (data1,data2,data3) VALUES ("' + geo_loc+ '","' + geo_loc1+ '","' + place_name+ '")';
-       alert(sql);
-          tx.executeSql(sql);
-       // tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-    }
-    function errorCB(err) {
-        console.log("Error processing SQL: "+err.code);
+		img.onload= drawImageScaled.bind(null, img, ctx);
+		img.src = imageURI;
+		//showAlert();
     }
 
-    // Transaction success callback
-    //
-    function successCB() {
-        var db = window.openDatabase("locateME", "1.0", "locateME DB", 200000);
-        db.transaction(queryDB, errorCB);
-    }
-    function queryDB(tx) {
-        tx.executeSql('SELECT * FROM locateME', [], querySuccess, errorCB);
-    }
-    var len;
-    function querySuccess(tx, results) {
-    	
-    	var myTable = document.getElementById('dbTable');
-        len = results.rows.length;
-      //  alert(len);
-        console.log("locateME table: " + len + " rows found.");
-        for (var i=0; i<len; i++){
-        //	alert(results.rows.item(i).data1);
-        //	alert(results.rows.item(i).data2);
-        
-	//	myTable.rows[i].cells[1].innerHTML = results.rows.item(i).data1;
-	//	myTable.rows[i].cells[2].innerHTML = results.rows.item(i).data2;
-	//	myTable.rows[i].cells[3].innerHTML = results.rows.item(i).data3;
-		
-           // console.log("Row = " + i + " ID = " + results.rows.item(i).data1 + " Data =  " + results.rows.item(i).data2);
-        }
-      var r = confirm("Press a button");
-	if (r == true) {
-    	addRow(tx,results);
-	} 
-     
-       }
-       
-       
-       
-       
-   function addRow(tx1,results1) {
-          
-  //  var myPlace = document.getElementById("place_txt");
-   // var myLat = document.getElementById("loc_txt");
-   // var myLong = document.getElementById("loc_txt1");
-    var table = document.getElementById("myTableData");
- var myTable = document.getElementById('dbTable');
-        len = results1.rows.length;
-        alert(len);
-       // console.log("locateME table: " + len + " rows found.");
-        for (var i=0; i<len; i++){
-   var rowCount = table.rows.length;
- //  alert('ff'+rowCount);
-    var row = table.insertRow(rowCount);
-alert(results1.rows.item(i).data1);
-alert(results1.rows.item(i).data2);
-alert(results1.rows.item(i).data3);
-  //  row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-    row.insertCell(1).innerHTML= results1.rows.item(i).data1;
-    row.insertCell(2).innerHTML= results1.rows.item(i).data2;
-    row.insertCell(3).innerHTML= results1.rows.item(i).data3;
-    
- 
-} 
-    
-   }
    
-   
-   function addRow1() {
-          
-    var myName = document.getElementById("name");
-    var age = document.getElementById("age");
-    var table = document.getElementById("myTableData11");
- 
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
- 
-    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-    row.insertCell(1).innerHTML= myName.value;
-    row.insertCell(2).innerHTML= age.value;
- 
+    function capturePhoto() {
+      
+navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
+    }
+
+    function getPhoto(source) {
+      
+navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,  destinationType: destinationType.FILE_URI, sourceType: source });
+    }
+
+    
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+	function clearCanvas() {
+
+	var c=document.getElementById("theCanvas");
+	var ctx=c.getContext("2d");
+
+	//ctx.clearRect(20,20,100,50);
+	  
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+	   ctx.putImageData(tmp,0,0);
+
+    }
+
+	function saveCanvas()
+{
+    window.canvas2ImagePlugin.saveImageDataToLibrary(
+        function(msg){
+            console.log(msg);
+        },
+        function(err){
+            console.log(err);
+        },
+        document.getElementById("theCanvas")  );
 }
-    </script>
-    <style>
-      .btncss
+function showConfirm() {
+//window.plugins.socialsharing.share('DigiGraph','From DigiGraph App', null, imgDataUrl);
+ canvas = document.getElementById('theCanvas');
+ ctx = canvas.getContext('2d');
+imgDataUrl = canvas.toDataURL();
+var imageObj = new Image();
+    imageObj.src = imgDataUrl;
+
+window.plugins.socialsharing.share('DigiGraph Share','Share',imageObj.src,null);
+ // ['www/manual.pdf','https://www.google.nl/images/srpr/logo4w.png'],
+ // 'http://www.myurl.com');
+}
+   // navigator.notification.confirm(
+     //   ' Share via', // message
+       //  onConfirm,            // callback to invoke with index of button pressed
+        //'DigiGraph',           // title
+        //['Facebook','Instagram','Viber','WhatsApp']         // buttonLabels
+   // );
+
+function onConfirm(buttonIndex) {
+  if(buttonIndex==1)
+  {
+    //alert('You selected button ' + buttonIndex);
+	//alert(imgDataUrl);
+	//window.plugins.socialsharing.shareViaFacebook('From DigiGraph App', imgDataUrl,null)
+	}
+}
+
+function onRotate(image11,ctx1) {
+//clearInterval(myVar);
+ var message = "Rotate the picture...";
+ var return_value = confirm(message);
+ if ( return_value === true ) {
+//	var canvas11 = ctx1.canvas ;
+	   // canvas11.height = image11.height;
+        //canvas11.width = image11.width;
+		//ctx1.translate(image11.width, image11.height);
+        ctx1.rotate(90*Math.PI/180);
+        ctx1.drawImage(image11, 0, 0);
+
+   }
+tmp = ctx1.getImageData(0,0,canvas.width, canvas.height);
+  }
+
+function rotateCanvas()
+{
+var c1=document.getElementById("theCanvas");
+	ctx=c1.getContext("2d");
+var img11 = new Image();
+//img11.src = ctx.toDataURL('image/png');
+img11.src=imgg_url;
+//ctx.drawImage(img11,0,0);
+	 // ctx.save();
+    //   ctx.clearRect(0, 0, c1.width, c1.height);
+	ctx.translate(img11.width, img11.height);
+	ctx.rotate(90*(Math.PI/180));
+	 //  ctx.putImageData(tmp,0,0);
+	 ctx.drawImage(img11,0,0);
+	// ctx.restore();
+
+}
+function signPhoto()
+{
+canvas = document.getElementById('theCanvas');
+      
+        if (canvas.getContext)
+            ctx = canvas.getContext('2d');
+             
+
+      
+        if (ctx) {
+		    canvas.addEventListener('mousedown', theCanvas_mouseDown, false);
+            canvas.addEventListener('mousemove', theCanvas_mouseMove, false);
+            window.addEventListener('mouseup', theCanvas_mouseUp, false);
+
+document.addEventListener('ontouchstart', function(e) {e.preventDefault()}, false);
+document.addEventListener('ontouchmove', function(e) {e.preventDefault()}, false);
+
+            canvas.addEventListener('touchstart', theCanvas_touchStart, false);
+            canvas.addEventListener('touchend', theCanvas_touchEnd, false);
+            canvas.addEventListener('touchmove', theCanvas_touchMove, false);
+
+        }
+		imgDataUrl = canvas.toDataURL();  
+		
+}
+  var e=event;
+
+  function drawLine(ctx,x,y,size) {
+        if (lastX==-1) {
+            lastX=x;
+	    lastY=y;
+        }
+        r=0; g=0; b=0; a=255;
+        ctx.strokeStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
+        ctx.lineCap = "round";
+        ctx.beginPath();
+	ctx.moveTo(lastX,lastY);
+	ctx.lineTo(x,y);
+        ctx.lineWidth = size;
+        ctx.stroke();
+        ctx.closePath();
+	lastX=x;
+	lastY=y;
+    } 
+
+    function theCanvas_mouseDown() {
+        mouseDown=1;
+        drawLine(ctx,mouseX,mouseY,3);
+		event.preventDefault();
+    }
+
+ 
+    function theCanvas_mouseUp() {
+        mouseDown=0;
+
+        lastX=-1;
+        lastY=-1;
+		event.preventDefault();
+    }
+
+    function theCanvas_mouseMove(e) { 
+ 
+        getMousePos(e);
+
+         if (mouseDown==1) {
+            drawLine(ctx,mouseX,mouseY,3);
+			event.preventDefault();
+        }
+    }
+
+ 
+    function getMousePos(e) {
+        if (!e)
+            var e = event;
+
+        if (e.offsetX) {
+            mouseX = e.offsetX;
+            mouseY = e.offsetY;
+        }
+        else if (e.layerX) {
+            mouseX = e.layerX;
+            mouseY = e.layerY;
+        }
+     }
+
+ 
+    function theCanvas_touchStart() {
+ 
+        getTouchPos();
+
+        drawLine(ctx,touchX,touchY,3);
+
+ 
+        event.preventDefault();
+    }
+
+    function theCanvas_touchEnd() {
+ 
+        lastX=-1;
+        lastY=-1;
+    }
+
+ 
+    function theCanvas_touchMove(e) { 
+ 
+        getTouchPos(e);
+
+                drawLine(ctx,touchX,touchY,3); 
+
+        
+        event.preventDefault();
+    }
+
+    
+    function getTouchPos(e) {
+        if (!e)
+            var e = event;
+
+        if(e.touches) {
+            if (e.touches.length == 1) { // Only deal with one finger
+                var touch = e.touches[0]; // Get the information for finger #1
+                touchX=touch.pageX-touch.target.offsetLeft;
+                touchY=touch.pageY-touch.target.offsetTop;
+            }
+        }
+    }
+
+
+</script>
+	<style>
+	h1 {
+	font: 15pt vivaldi;
+	text-align: center;
+	color: #e5b7ad;
+	padding-top: 1px ;
+	text-shadow: 1px 1px 2px #fff; 
+	width:100%;
+	}
+	
+ 	.canvasStyle
+	{
+        position: fixed;
+		border: 0px #CCC solid;
+		cursor:crosshair ;
+		
+    }
+	.btncss
 	{
 	background:none;
 	border:none;
 	padding:0;
-	cursor:pointer;
+	cursor:pinter;
 	font: 8pt arial;
 	font-family:Oswald, sans-serif; /*Oswald is available from http://www.google.com/webfonts/specimen/Oswald*/
 	color: #b32d5f;
 	}
-
-    </style>
+	#sketch {
+    /* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  </style>
   </head>
-  <body>
-    <h1>locateME</h1>
-    <p>Database</p>
-    <input type=text id=loc_txt><input type=text id=loc_txt1><button onclick="getloc();" class="btncss">Get Latitude and Longitude</button><br>
-    <input type=text id=place_txt><button onclick="placeloc();" class="btncss">Enter Place Name</button><br><br>
-    <button onclick="saveloc();" class="btncss">Save Location</button><br>
-    <br>
-    <!--<input type="button" id="add" value="Add" onclick="addRow();">-->
-    <table id="myTableData"  border="1" cellpadding="0" cellspacing="0">
-    <tr>
-        <td>Place Name</td>
-        <td>Latitude</td>
-        <td>Longitude</td>
-    </tr>
+  <body onload="start();">
+  <header>
+  <h1>DigiGraph</h1>
+  </header>
+
+  
+  
+ 
+  <section>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss">Upload Image</button></td>
+<td><button onclick="capturePhoto();" class="btncss">Take a Selfie</button></td>
+<td><button onclick="signn();" class="btncss">Sign </button></td>
+<td><button onclick="saveCanvas();" class="btncss" >Save</td>
+<td><button onclick="clearCanvas();" class="btncss" >Clear</td></tr>
+<tr><td colspan=5 align="right"><a href="#" onclick="rotateCanvas();"><img src="rotate.png"></a>&nbsp;<a href="#" onclick="showConfirm(); return false;"><img src="share.png"></a></td></tr>
 </table>
-   <!-- <table id=myTableData11>
-    <tr>
-        <td>Name:</td>
-        <td><input type="text" id="name"></td>
-    </tr>
-    <tr>
-        <td>Age:</td>
-        <td><input type="text" id="age">
-        <input type="button" id="add" value="Add" onclick="addRow1();"></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-</table>-->
+  
+<div id="sketch">
+
+        <canvas id="theCanvas" class="canvasStyle"></canvas>
+</div>
+
+</section>
+
+
+
+
+    
   </body>
 </html>
