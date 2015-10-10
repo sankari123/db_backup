@@ -6,22 +6,11 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
-    <script type="text/javascript">
-            var dd = $.Deferred();
-            var jqd = $.Deferred();
-            $.when(dd, jqd).done(doInit);
-
-            $(document).bind('mobileinit', function () {
-                jqd.resolve();
-            });
-        </script>
-        
-	<script>
+  	<script>
   	var imgDataUrl;
 	var start = function() {
     screen.orientation.lock('portrait');
-      
-    }
+     }
 
 	var rotate_condn;
     var canvas,ctx,ctx1;
@@ -370,6 +359,7 @@ document.body.addEventListener('touchstart',function(event){event.preventDefault
     // create a function to pass touch events and coordinates to drawer
     function draw(event){
         // get the touch coordinates
+        alert("draw");
         var coors = {
             x: event.targetTouches[0].pageX,
             y: event.targetTouches[0].pageY
@@ -382,18 +372,21 @@ function sign_final()
     // get the canvas element and its context
     canvas = document.getElementById('theCanvas');
     context = canvas.getContext('2d');
-    context.lineWidth = 5;
+    context.lineWidth = 10;
     context.strokeStyle = 'black';
     // attach the touchstart, touchmove, touchend event listeners.
+    alert("in");
     canvas.addEventListener('touchstart',draw, false);
     canvas.addEventListener('touchmove',draw, false);
-    canvas.addEventListener('touchend',draw, false);
+    canvas.addEventListener('touchend',ended, false);
 
     // prevent elastic scrolling
-    document.body.addEventListener('touchmove',function(event){
-        event.preventDefault();    },false);   // end body.onTouchMove
+    document.body.addEventListener('touchmove',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
 
 }
+function ended(){
+  /*  your code here */
+    }
 </script>
 	<style>
 	h1 {
