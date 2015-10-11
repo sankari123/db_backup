@@ -77,16 +77,17 @@ function drawImageScaled(img, ctx) {
     }
 
    
-    function capturePhoto() {
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,  destinationType: destinationType.FILE_URI,correctOrientation: true });
-    
-   //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-     //   destinationType: destinationType.DATA_URL });
+   
+function capturePhoto() {
+      
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
     }
 
     function getPhoto(source) {
       
- navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,destinationType: destinationType.FILE_URI,sourceType: source });
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,sourceType: source });
     }
 
     // Called if something bad happens.
