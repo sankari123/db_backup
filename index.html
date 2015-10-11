@@ -181,6 +181,7 @@ function signPhoto()
             canvas.addEventListener('touchend', theCanvas_touchEnd, false);
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
 document.addEventListener('touchmove',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
+document.addEventListener('touchstart',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
         }
 		imgDataUrl = canvas.toDataURL();  
 		ctx.save();
