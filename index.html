@@ -211,7 +211,7 @@ function signPhoto()
             canvas.addEventListener('touchstart', theCanvas_touchStart, false);
             canvas.addEventListener('touchend', theCanvas_touchEnd, false);
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
-document.body.addEventListener('touchmove',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
+document.addEventListener('touchmove',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
        // tmp1 = ctx.getImageData(0,0,canvas1.width, canvas1.height);
 //	ctx.save();
 		
@@ -384,7 +384,7 @@ document.body.addEventListener('touchmove',function(event){ event.preventDefault
  
             // prevent elastic scrolling
    document.addEventListener('touchmove', function(event){ event.preventDefault();    }, false); 
-   $(document).bind( 'touchmove',  function(event) { event.preventDefault();      });
+   
          }
          else {
  
