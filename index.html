@@ -79,13 +79,14 @@ function drawImageScaled(img, ctx) {
    
    
 function capturePhoto() {
-      
+	
+      clearCanvas_1();
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,targetWidth:800, targetHeight:600,
         destinationType: destinationType.DATA_URL,correctOrientation: true });
     }
 
     function getPhoto(source) {
-      
+      clearCanvas_1();
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,targetWidth:800, targetHeight:600,
         destinationType: destinationType.FILE_URI,sourceType: source });
     }
@@ -299,15 +300,15 @@ function clearCanvas() {
 
 	//ctx.clearRect(20,20,100,50);
 	  
-       ctx.clearRect(0, 0, canvas.width, canvas.height);
+       ctx.clearRect(0, 0, c.width, c.height);
 	   ctx.putImageData(tmp,0,0);
 
     }
     
     function clearCanvas_1() {
 
-	var c=document.getElementById("theCanvas");
-	var ctx=c.getContext("2d");
+	var canvas=document.getElementById("theCanvas");
+	var ctx=canvas.getContext("2d");
        ctx.clearRect(0, 0, canvas.width, canvas.height);
 	  
 
@@ -355,8 +356,8 @@ function clearCanvas() {
   <section>
 <table width="100%" height="5%">
 <tr>
-<td><button onclick="clickCanvas_1();getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss">Upload Image</button></td>
-<td><button onclick="clickCanvas_1();capturePhoto();" class="btncss">Take a Selfie</button></td>
+<td><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss">Upload Image</button></td>
+<td><button onclick="capturePhoto();" class="btncss">Take a Selfie</button></td>
 <td><button onclick="signPhoto();" class="btncss">Sign </button></td>
 <td><button onclick="saveCanvas();" class="btncss" >Save</td>
 <td><button onclick="clearCanvas();" class="btncss" >Clear</td></tr>
