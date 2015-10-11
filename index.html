@@ -432,7 +432,15 @@ document.addEventListener('touchmove',function(event){ event.preventDefault();  
       
 </script>
 	<style>
-
+	#sketch_new {
+    /* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+   }
 	h1 {
 	font: 15pt vivaldi;
 	text-align: center;
