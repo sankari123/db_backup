@@ -79,7 +79,7 @@ function drawImageScaled(img, ctx) {
    
 function capturePhoto() {
 	
-      clearCanvas_1();
+     // clearCanvas_1();
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,targetWidth:800, targetHeight:600,
         destinationType: destinationType.DATA_URL,correctOrientation: true });
     }
