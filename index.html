@@ -80,8 +80,8 @@ function drawImageScaled(img, ctx) {
    
 function capturePhoto() {
       
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,targetWidth:400, targetHeight:400,
-        destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,targetWidth:800, targetHeight:600,
+        destinationType: destinationType.DATA_URL,correctOrientation: true });
     }
 
     function getPhoto(source) {
