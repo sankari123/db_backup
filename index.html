@@ -81,6 +81,7 @@ tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
     function onPhotoURISuccess(imageURI) {
 	    var c = document.getElementById("theCanvas");
 		var ctx = c.getContext('2d');
+		ctx.clearRect(0, 0, c.width, c.height);
 	    var img = new Image();
 		img.onload= drawImageScaled.bind(null, img, ctx);
 		img.src = imageURI;
