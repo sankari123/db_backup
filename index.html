@@ -17,6 +17,7 @@
     screen.orientation.lock('portrait');
       
     }
+    var paused=false;
     var canvas,ctx;
     var mouseX,mouseY,mouseDown=0;
     var touchX,touchY;
@@ -185,7 +186,7 @@ function signPhoto()
     // Keep track of the mouse button being pressed and draw a dot at current location
     function theCanvas_mouseDown() {
         mouseDown=1;
-        drawLine(ctx,mouseX,mouseY,5);
+        drawLine(ctx,mouseX,mouseY,3);
     }
 
     // Keep track of the mouse button being released
@@ -204,7 +205,7 @@ function signPhoto()
 
         // Draw a dot if the mouse button is currently being pressed
         if (mouseDown==1) {
-            drawLine(ctx,mouseX,mouseY,5);
+            drawLine(ctx,mouseX,mouseY,3);
         }
     }
 
@@ -228,7 +229,7 @@ function signPhoto()
         // Update the touch co-ordinates
         getTouchPos();
 
-        drawLine(ctx,touchX,touchY,5);
+        drawLine(ctx,touchX,touchY,3);
 
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
@@ -246,7 +247,7 @@ function signPhoto()
         getTouchPos(e);
 
         // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-        drawLine(ctx,touchX,touchY,5); 
+        drawLine(ctx,touchX,touchY,3); 
 
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
@@ -317,15 +318,17 @@ function onConfirm(buttonIndex) {
 	text-shadow: 1px 1px 2px #fff; 
 	width:100%;
 	}
-	.sketch {
+	.sketchpadapp {
 	border: 0px solid gray;
 	height: 100%;
+	position: absolute;
 	}
  	.canvasStyle
 	{
         border: 1px #CCC solid;
 		width:100%;
 		height:100%;
+		position:fixed;
     }
 	.btncss
 	{
