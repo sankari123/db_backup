@@ -52,7 +52,7 @@ function drawImageScaled_new(img2, ctx2) {
    var canvas1 = ctx2.canvas ;
    canvas1.height = window.innerHeight;
 	canvas1.width = window.innerWidth;
-  //  ctx2.clearRect(0,0,canvas1.width, canvas1.height);
+  ctx2.clearRect(0,0,canvas1.width, canvas1.height);
   ctx2.drawImage(img2, 0,0, canvas1.width, canvas1.height);
   
   var message = "Rotate the picture...";
@@ -70,8 +70,8 @@ function drawImageScaled(img, ctx) {
    canvas = ctx.canvas ;
    canvas.height = window.innerHeight;
 	canvas.width = window.innerWidth;
-  // ctx.clearRect(0,0,canvas.width, canvas.height);
-  ctx.restore();
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+ 
   ctx.drawImage(img, 0,0, canvas.width, canvas.height);
 tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
  
@@ -120,9 +120,6 @@ navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,  destinati
 
 	var c=document.getElementById("theCanvas");
 	var ctx=c.getContext("2d");
-
-	//ctx.clearRect(20,20,100,50);
-	  
        ctx.clearRect(0, 0, canvas.width, canvas.height);
 	   ctx.putImageData(tmp,0,0);
 
