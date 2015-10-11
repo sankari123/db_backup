@@ -171,15 +171,20 @@ function signPhoto()
 {
 	    canvas = document.getElementById('theCanvas');
             ctx = canvas.getContext('2d');
-            canvas.addEventListener('mousedown', theCanvas_mouseDown, false);
+            if (ctx) {
+	    canvas.addEventListener('mousedown', theCanvas_mouseDown, false);
             canvas.addEventListener('mousemove', theCanvas_mouseMove, false);
             window.addEventListener('mouseup', theCanvas_mouseUp, false);
 
+            
             canvas.addEventListener('touchstart', theCanvas_touchStart, false);
             canvas.addEventListener('touchend', theCanvas_touchEnd, false);
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
 document.addEventListener('touchmove',function(event){ event.preventDefault();    },false);   // end body.onTouchMove
-       // tmp1 = ctx.getImageData(0,0,canvas1.width, canvas1.height);
+        }
+		imgDataUrl = canvas.toDataURL();  
+		
+              // tmp1 = ctx.getImageData(0,0,canvas1.width, canvas1.height);
 	ctx.save();
 		
 }
