@@ -6,6 +6,8 @@
   <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
   </feature>
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
   <preference name="phonegap-version" value="cli-5.2.0" /> 
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
