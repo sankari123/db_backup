@@ -298,17 +298,8 @@ function clearCanvas() {
     function howto()
     {
     		//	VideoPlayer.play("basit.mp4");
-	
-	VideoPlayer.play(
-    "file:///basit.mp4",
-    {
-        volume: 0.5,
-        scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING
-    },
-    function (err) {
-        console.log(err);
-    }
-);
+	alert("in");
+	VideoPlayer.play("basit.mp4", {volume: 0.5, scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function (err) { console.log(err);  });
   //  var video = document.getElementById('video');
   // video.addEventListener('click',function(){   video.play();
   // },false);
@@ -352,7 +343,7 @@ a { text-decoration : none; color : #000; }
   </head>
   <body onload="start();">
   <header>
-  <h1>DigiGraph</h1><br>
+  <h1>DigiGraph</h1>
   </header>
 
   
