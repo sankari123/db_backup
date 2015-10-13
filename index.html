@@ -7,6 +7,7 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8" src="Canvas2ImagePlugin.js"></script>
+	<script type="text/javascript" src="videoplayer.js"></script>
 	<script>
     	var imgDataUrl;
 	var start = function() {
@@ -298,17 +299,9 @@ function clearCanvas() {
     function howto()
     {
     	
-    	var videoUrl = sample.mp4;
-
-  // Just play a video
-  window.plugins.streamingMedia.playVideo(videoUrl);
-
-  // Play a video with callbacks
-  var options = { successCallback: function() { console.log("Video was closed without error.");    },
-    errorCallback: function(errMsg) {
-      console.log("Error! " + errMsg);
-    }
-  };
+    VideoPlayer.play("file:///sample.mp4",
+ {
+ volume: 1.0,  scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function () { console.log("video completed"); }, function (err) { console.log(err); } );
  // window.plugins.streamingMedia.playVideo(videoUrl, options);
     	//	VideoPlayer.play("http://writeacademy.in/digigraph/basit.mp4");
 //	alert("in");
