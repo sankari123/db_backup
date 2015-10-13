@@ -8,11 +8,7 @@
     <script type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8" src="Canvas2ImagePlugin.js"></script>
 	<script>
-    //  image01= new Image()
-	  //image01.src="instagram.png"
-      //image02= new Image()
-      //image02.src="facebook.jpg"
-	var imgDataUrl;
+    	var imgDataUrl;
 	var start = function() {
    // screen.orientation.lock('portrait');
       
@@ -43,13 +39,9 @@
    var ctx = c.getContext("2d");
    var img = new Image();
 
- //  var img = document.getElementById("scream");
-         
-		 img.onload= drawImageScaled.bind(null, img, ctx);
+ 		 img.onload= drawImageScaled.bind(null, img, ctx);
 		 img.src = "data:image/jpeg;base64," + imageData;
-  //showAlert();
- //  ctx.drawImage(img,10,10,100,100);
-}
+  }
 function drawImageScaled(img, ctx) {
    var canvas = ctx.canvas ;
    canvas.height = window.innerHeight;
@@ -273,22 +265,13 @@ var imageObj = new Image();
     imageObj.src = imgDataUrl;
 
 window.plugins.socialsharing.share('DigiGraph Share','Share',imageObj.src,null);
- // ['www/manual.pdf','https://www.google.nl/images/srpr/logo4w.png'],
- // 'http://www.myurl.com');
+ 
 }
-   // navigator.notification.confirm(
-     //   ' Share via', // message
-       //  onConfirm,            // callback to invoke with index of button pressed
-        //'DigiGraph',           // title
-        //['Facebook','Instagram','Viber','WhatsApp']         // buttonLabels
-   // );
-
+  
 function onConfirm(buttonIndex) {
   if(buttonIndex==1)
   {
-    //alert('You selected button ' + buttonIndex);
-	//alert(imgDataUrl);
-	//window.plugins.socialsharing.shareViaFacebook('From DigiGraph App', imgDataUrl,null)
+    
 	}
 }
 
@@ -312,6 +295,16 @@ function clearCanvas() {
 	  
 
     }
+    function howto()
+    {
+    			VideoPlayer.play("basit.mp4");
+	
+	
+  //  var video = document.getElementById('video');
+  // video.addEventListener('click',function(){   video.play();
+  // },false);
+}
+    
 </script>
 	<style>
 	h1 {
@@ -350,13 +343,14 @@ a { text-decoration : none; color : #000; }
   </head>
   <body onload="start();">
   <header>
-  <h1>DigiGraph</h1>
+  <h1>DigiGraph</h1><br>
   </header>
 
   
-  
+  <p align=right><button onclick="howto();" class="btncss">Demo</button></p>
  
   <section>
+  
 <table width="100%" height="5%">
 <tr>
 <td width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss">Upload Image</button></td>
