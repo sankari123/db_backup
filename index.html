@@ -297,11 +297,11 @@ function clearCanvas() {
     }
     function howto()
     {
-    		//	VideoPlayer.play("basit.mp4");
+    		VideoPlayer.play("file:///android_asset/www/basit.mp4");
 //	alert("in");
 //	VideoPlayer.play("basit.mp4", {volume: 0.5, scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function (err) { console.log(err);  });
-  var video = document.getElementById('video');
-  video.addEventListener('click',function(){   video.play();  },false);
+ // var video = document.getElementById('video');
+ // video.addEventListener('click',function(){   video.play();  },false);
 }
     
 </script>
@@ -347,9 +347,7 @@ a { text-decoration : none; color : #000; }
 
   
   <p align=right><button onclick="howto();" class="btncss">Demo</button></p>
- <video controls="controls">
-            <source src="basit.mp4" type="video/mp4" />
-        </video>
+
 
 
   <section>
