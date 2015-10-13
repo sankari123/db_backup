@@ -299,9 +299,8 @@ function clearCanvas() {
     function howto()
     {
     	
-    VideoPlayer.play("file:///sample.mp4",
- {
- volume: 1.0,  scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function () { console.log("video completed"); }, function (err) { console.log(err); } );
+    VideoPlayer.play("file:///android_asset/sample.mp4",
+ { volume: 1.0,  scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function () { console.log("video completed"); }, function (err) { console.log(err); } );
  // window.plugins.streamingMedia.playVideo(videoUrl, options);
     	//	VideoPlayer.play("http://writeacademy.in/digigraph/basit.mp4");
 //	alert("in");
