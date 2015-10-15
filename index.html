@@ -53,7 +53,7 @@ function drawImageScaled(img, ctx) {
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
    
    
-   navigator.notification.alert('Click Sign and write on the image',  alertDismissed,   'DigiGraph',   'OK'      );
+   navigator.notification.alert('Click <Sign> and write on the image and click <Save> to save',  alertDismissed,   'DigiGraph',   'OK'      );
 }
 function alertDismissed() {
             // do something
@@ -114,7 +114,7 @@ function signPhoto()
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
         }
 		imgDataUrl = canvas.toDataURL();  
-		navigator.notification.alert('Click Save to save the image. ',  alertDismissed,   'DigiGraph',   'OK'      );
+	
 		//window.location = canvas.toDataURL('image/png');
 		
 }
