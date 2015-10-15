@@ -53,7 +53,7 @@ function drawImageScaled(img, ctx) {
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
    
    
-   navigator.notification.alert('Sign on the image',  alertDismissed,   'Sign',   'Done'      );
+   navigator.notification.alert('Click Sign and write on the image',  alertDismissed,   'DigiGraph',   'OK'      );
 }
 function alertDismissed() {
             // do something
@@ -114,6 +114,7 @@ function signPhoto()
             canvas.addEventListener('touchmove', theCanvas_touchMove, false);
         }
 		imgDataUrl = canvas.toDataURL();  
+		navigator.notification.alert('Click Save to save the image. ',  alertDismissed,   'DigiGraph',   'OK'      );
 		//window.location = canvas.toDataURL('image/png');
 		
 }
@@ -258,6 +259,8 @@ function signPhoto()
             console.log(err);
         },
         document.getElementById("theCanvas")  );
+ 	navigator.notification.alert('Image saved successfully.To view the image, open <Pictures> folder in your device. ',  alertDismissed,   'DigiGraph',   'OK'      );
+        
 }
 function showConfirm() {
 //window.plugins.socialsharing.share('DigiGraph','From DigiGraph App', null, imgDataUrl);
