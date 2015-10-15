@@ -55,7 +55,10 @@ function drawImageScaled(img, ctx) {
    
    navigator.notification.alert('Sign on the image',  alertDismissed,   'Sign',   'Done'      );
 }
-
+function alertDismissed() {
+            // do something
+        }
+        
     function onPhotoURISuccess(imageURI) {
 	    var c = document.getElementById("theCanvas");
 		var ctx = c.getContext('2d');
