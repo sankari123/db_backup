@@ -23,7 +23,7 @@
 	var tmp;
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
-   
+   var drawn=null;
     document.addEventListener("deviceready",onDeviceReady,false);
 
     
@@ -51,9 +51,20 @@ function drawImageScaled(img, ctx) {
 	ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
+ //  var d       = ctx.getImageData(0, 0, w, w); //image data 
+  var len     = tmp.data.length;
+  for(var i =0; i< len; i++) {
+    if(!tmp.data[i]) {
+      drawn = false;
+    }else if(tmp.data[i]) {
+      drawn = true;
+      //alert('Something drawn on Canvas');
+       navigator.notification.alert('Click <Sign> and write on the image and click <Save> to save',  alertDismissed,   'DigiGraph',   'OK'      );
+    //  break;
+    }
+  }
    
-   
-   navigator.notification.alert('Click <Sign> and write on the image and click <Save> to save',  alertDismissed,   'DigiGraph',   'OK'      );
+  
 }
 function alertDismissed() {
             // do something
