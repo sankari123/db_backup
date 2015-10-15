@@ -14,7 +14,7 @@
    // screen.orientation.lock('portrait');
       
     }
-    var searchPic;
+    
     var paused=false;
     var canvas,ctx;
     var mouseX,mouseY,mouseDown=0;
@@ -49,16 +49,7 @@ function drawImageScaled(img, ctx) {
    canvas.height = window.innerHeight;
 	canvas.width = window.innerWidth;
 	ctx.clearRect(0,0,canvas.width, canvas.height);
-    searchPic=new Image();
-
-searchPic.src = img;
-searchPic.onload = function()
-{
-     ctx.drawImage(searchPic, 0,0,canvas.width,canvas.height);
-}
-   
-   
- //  ctx.drawImage(img, 0,0,canvas.width,canvas.height);
+    ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
 }
 
