@@ -313,7 +313,9 @@ function clearCanvas() {
  // var video = document.getElementById('video');
  // video.addEventListener('click',function(){   video.play();  },false);
 }
-    
+     function OnUnLoad () {
+            alert ("Thanks for using DigiGraph...! Please visit our website to share your thoughts...!");
+        }
 </script>
 	<style>
 	h1 {
@@ -350,7 +352,7 @@ a { text-decoration : none; color : #000; }
 	
   </style>
   </head>
-  <body onload="start();">
+  <body onload="start();" onunload="OnUnLoad ()">>
   <header>
   <h1>DigiGraph</h1>
   </header>
