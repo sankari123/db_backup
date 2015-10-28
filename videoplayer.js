@@ -1,34 +1,23 @@
+/*-
+ * cordova VideoPlayer Plugin for Android
+ *
+ * Created by Simon MacDonald (2008) MIT Licensed
+ * Revised for Cordova 3.3+ by Dawson Loudon (2013) MIT Licensed
+ *
+ * Usages:
+ *
+ * VideoPlayer.play("http://path.to.my/video.mp4");
+ * VideoPlayer.play("file:///path/to/my/video.mp4");
+ * VideoPlayer.play("file:///android_asset/www/path/to/my/video.mp4");
+ * VideoPlayer.play("https://www.youtube.com/watch?v=en_sVVjWFKk");
+ */
+
 var exec = require("cordova/exec");
 
-module.exports = {
-
-    DEFAULT_OPTIONS: {
-        volume: 1.0,
-        scalingMode: 1
-    },
-
-    SCALING_MODE: {
-        SCALE_TO_FIT: 1,
-        SCALE_TO_FIT_WITH_CROPPING: 2
-    },
-
-    play: function (path, options, successCallback, errorCallback) {
-        options = this.merge(this.DEFAULT_OPTIONS, options);
-        exec(successCallback, errorCallback, "VideoPlayer", "play", [path, options]);
-    },
-
-    close: function (successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "VideoPlayer", "close", []);
-    },
-
-    merge: function () {
-        var obj = {};
-        Array.prototype.slice.call(arguments).forEach(function(source) {
-            for (var prop in source) {
-                obj[prop] = source[prop];
-            }
-        });
-        return obj;
+var VideoPlayer = {
+    play: function(url) {
+        exec(null, null, "VideoPlayer", "playVideo", [url]);
     }
-
 };
+
+module.exports = VideoPlayer;
