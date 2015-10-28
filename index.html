@@ -329,6 +329,15 @@ function clearCanvas() {
      function OnUnLoad () {
             alert ("Thanks for using DigiGraph...! Please visit our website to share your thoughts...!");
         }
+        function demo()
+        {
+        	if(device.platform =="iOS"){
+   //[video][/video]
+}
+else if(device.platform =="android"){
+    VideoPlayer.play("file:///sample.mp4");
+}
+        }
 </script>
 	<style>
 	h1 {
