@@ -39,11 +39,15 @@
 function onConfirmExit(button) {
     if(button==2){ //If User select a No, then return back;
         return;
-    }else{
-        navigator.app.exitApp(); // If user select a Yes, quit from the app.
+    }else if (navigator && navigator.app) {
+         navigator.app.exitApp();
+      }
+      else {
+         if (navigator && navigator.device) {
+            navigator.device.exitApp();
+	} 
     }
-}
-    
+}    
     function onPhotoDataSuccess(imageData) {
       
 	 
