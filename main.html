@@ -9,13 +9,7 @@
     	<script type="text/javascript" src="slide.js"></script>
 	<script type="text/javascript" charset="utf-8" src="Canvas2ImagePlugin.js"></script>
 	<script type="text/javascript" src="videoplayer.js"></script>
-	<script type="text/javascript">
-var viewer = new PhotoViewer();
-  viewer.add('1.png');
-  viewer.add('2.png');
-  viewer.add('3.png');
-  viewer.add('4.png');
-  </script>
+
   <script>
   
 
@@ -23,6 +17,7 @@ var viewer = new PhotoViewer();
 	var start = function() {
    // screen.orientation.lock('portrait');
       
+
     }
     
     var paused=false;
@@ -37,6 +32,13 @@ var viewer = new PhotoViewer();
     document.addEventListener("deviceready",onDeviceReady,false);
     
     function onDeviceReady() {
+    	var i = 0; var path = new Array(); 
+
+// LIST OF IMAGES 
+path[0] = "1.png"; 
+path[1] = "2.png"; 
+path[2] = "3.png";
+path[3] = "4.png"; 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
          document.addEventListener("backbutton", function (e) {
@@ -299,6 +301,25 @@ function clearCanvas() {
             alert ("Thanks for using DigiGraph...! Please visit our website to share your thoughts...!");
         }
         
+        function swapImage()
+        {
+        		if(ctr==0)
+        		{document.getElementById("tble").style.display = 'none';
+        		document.getElementById("sketchpadapp").style.display = 'none';
+			document.getElementById("slide").style.visibility='visible';
+        		}
+			//	var img = document.getElementById('myImageId');
+    			//img.style.visibility = 'visible';
+       	document.slide.src = path[i]; 
+       	ctr++;
+if(i < path.length - 1) i++; 
+else i = 0; 
+setTimeout("swapImage()",300); 
+if (i==0)
+{
+	document.getElementById("slide").style.visibility='hidden';
+}
+        }
 </script>
 	<style>
 	h1 {
@@ -341,9 +362,9 @@ a { text-decoration : none; color : #000; }
   </header>
 
   
-<p align=right><button onclick="javascript:void(viewer.show(0))" class="btncss">Demo</button></p>
-
-  <section>
+<p align=right><button onclick="swapImage();" class="btncss">Demo</button></p>
+<img id="slide" type="hidden" src="demo.png"  />
+  <div id="tble">
   
 <table width="100%" height="5%">
 <tr>
@@ -355,7 +376,7 @@ a { text-decoration : none; color : #000; }
 <!--<tr><td colspan=5 align="right"><a href="#" onclick="showConfirm(); return false;">Share</a></td></tr>-->
 </table>
   
-</section>
+</div>
 <div id="sketchpadapp">
         <canvas id="theCanvas" class="canvasStyle"></canvas>
 </div>
