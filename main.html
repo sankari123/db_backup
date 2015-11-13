@@ -249,8 +249,8 @@ function signPhoto()
 }
 function showConfirm() {
 	saveCanvas();
-// canvas = document.getElementById('theCanvas');
-// ctx = canvas.getContext('2d');
+canvas = document.getElementById('theCanvas');
+ctx = canvas.getContext('2d');
 imgDataUrl = canvas.toDataURL();
 var imageObj = new Image();
     imageObj.src = imgDataUrl;
