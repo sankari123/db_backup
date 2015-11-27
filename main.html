@@ -340,7 +340,7 @@ a { text-decoration : none; color : #000; }
 	}
  	.canvasStyle
 	{
-        border: 0px #CCC solid;
+        border: 1px #CCC solid;
 	position:fixed;
     }
 	.btncss
@@ -366,8 +366,8 @@ a { text-decoration : none; color : #000; }
 <!--<img id="slide" type="hidden" />-->
   <div id="tble">
   
-<table width="100%" height="5%">
-<tr><td colspan=2><img src="logo.png">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"></font>DigiGraph</font></td></tr>
+<table width="100%" height="100%" border="1">
+<tr><td colspan=2><img src="icon.png">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"></font>DigiGraph</font></td></tr>
 <tr><td><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss"><img src="icon.png"></button></td><td rowspan=5><canvas id="theCanvas" class="canvasStyle"></canvas></td></tr>
 <tr><td valign="middle"><button onclick="capturePhoto();" class="btncss"><img src="icon.png"></button></td></tr>
 <tr><td><button onclick="signPhoto();" class="btncss"><img src="icon.png"> </button></td></tr>
