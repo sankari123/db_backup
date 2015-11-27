@@ -72,8 +72,8 @@ function onConfirmExit(button) {
   }
 function drawImageScaled(img, ctx) {
    var canvas = ctx.canvas ;
-   canvas.height = window.innerHeight;
-	canvas.width = window.innerWidth;
+   canvas.height = 800;
+	canvas.width = 600;
 	ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
