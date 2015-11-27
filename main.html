@@ -32,14 +32,7 @@
     document.addEventListener("deviceready",onDeviceReady,false);
     
     function onDeviceReady() {
-    	var i = 0; var path = new Array(); 
-
-// LIST OF IMAGES 
-path[0] = "1.png"; 
-path[1] = "2.png"; 
-path[2] = "3.png";
-path[3] = "4.png"; 
-        pictureSource=navigator.camera.PictureSourceType;
+    	pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
          document.addEventListener("backbutton", function (e) {
         e.preventDefault(); 
@@ -72,8 +65,10 @@ function onConfirmExit(button) {
   }
 function drawImageScaled(img, ctx) {
    var canvas = ctx.canvas ;
-   canvas.width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-   canvas.height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+//   canvas.width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  // canvas.height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+  canvas.width = window.innerWidth-10;
+  canvas.height = window.innerHeight-10;
    	ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
