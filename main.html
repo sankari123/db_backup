@@ -367,19 +367,18 @@ a { text-decoration : none; color : #000; }
   <div id="tble">
   
 <table width="100%" height="5%">
-<tr>
-<td width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss">Upload Image</button></td>
-<td width="20%"><button onclick="capturePhoto();" class="btncss">Take a Selfie</button></td>
-<td width="20%"><button onclick="signPhoto();" class="btncss">Sign </button></td>
-<td width="20%"><button onclick="showConfirm();" class="btncss" >Share</td>
-<td width="20%"><button onclick="clearCanvas();" class="btncss" >Clear</td></tr>
+<tr><td colspan=2><img src="logo.png">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"></font>DigiGraph</font></td></tr>
+<tr><td><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss"><img src="icon.png"></button></td><td rowspan=5><canvas id="theCanvas" class="canvasStyle"></canvas></td></tr>
+<tr><td valign="middle"><button onclick="capturePhoto();" class="btncss"><img src="icon.png"></button></td></tr>
+<tr><td><button onclick="signPhoto();" class="btncss"><img src="icon.png"> </button></td></tr>
+<tr><td><button onclick="showConfirm();" class="btncss" ><img src="icon.png"></td></tr>
+<tr><td><button onclick="clearCanvas();" class="btncss" ><img src="icon.png"></td></tr>
 <!--<tr><td colspan=5 align="right"><a href="#" onclick="showConfirm(); return false;">Share</a></td></tr>-->
 </table>
   
 </div>
-<div id="sketchpadapp">
+<!--<div id="sketchpadapp">
         <canvas id="theCanvas" class="canvasStyle"></canvas>
-</div>
-
+</div>-->
 </body>
 </html>
