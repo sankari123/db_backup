@@ -67,10 +67,10 @@ function drawImageScaled(img, ctx) {
    var canvas = ctx.canvas ;
 //   canvas.width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   // canvas.height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-  canvas.width = canvas.parentNode.clientWidth;
-    canvas.height = canvas.parentNode.clientHeight;
- // canvas.width = window.innerWidth-10;
- // canvas.height = window.innerHeight-10;
+//  canvas.width = canvas.parentNode.clientWidth;
+ //   canvas.height = canvas.parentNode.clientHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight-10;
    	ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
@@ -312,10 +312,11 @@ function clearCanvas() {
 	
   </style>
   </head>
-  <body onload="start();" onunload="OnUnLoad ();" style="height: 100%; width:"100%;">
+  <body onload="start();" onunload="OnUnLoad ();">
  
- <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:2px solid">
- <tr><td colspan=5><img src="dg header.png"></td></tr>
+<!-- <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:2px solid">-->
+<table cellspacing="0" cellpadding="0">
+ <tr><td colspan=5><img src="dg header.png" width="80%" height="80%"></td></tr>
 <tr>
 <td width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss"><img src="gallery.png"></td>
 <td width="20%"><button onclick="capturePhoto();" class="btncss"><img src="selfie.png"></button></td>
