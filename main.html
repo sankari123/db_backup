@@ -67,8 +67,10 @@ function drawImageScaled(img, ctx) {
    var canvas = ctx.canvas ;
 //   canvas.width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   // canvas.height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-  canvas.width = window.innerWidth-10;
-  canvas.height = window.innerHeight-10;
+  canvas.width = canvas.parentNode.clientWidth;
+    canvas.height = canvas.parentNode.clientHeight;
+ // canvas.width = window.innerWidth-10;
+ // canvas.height = window.innerHeight-10;
    	ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
@@ -280,41 +282,11 @@ function clearCanvas() {
   
     	
     
-    function howto()
-    {
-    	
-    VideoPlayer.play("file:///android_asset/www/sample1.mp4",
- { volume: 1.0,  scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function () { console.log("video completed"); }, function (err) { console.log(err); } );
- // window.plugins.streamingMedia.playVideo(videoUrl, options);
-    	//	VideoPlayer.play("http://writeacademy.in/digigraph/basit.mp4");
-//	alert("in");
-//	VideoPlayer.play("file:///android_asset/www/sample1.mp4", {volume: 0.5, scalingMode: VideoPlayer.SCALING_MODE.SCALE_TO_FIT_WITH_CROPPING }, function (err) { console.log(err);  });
- // var video = document.getElementById('video');
- // video.addEventListener('click',function(){   video.play();  },false);
-}
+    
      function OnUnLoad () {
             alert ("Thanks for using DigiGraph...! Please visit our website to share your thoughts...!");
         }
-        var ctr;
-        function swapImage()
-        {
-        		if(ctr==0)
-        		{document.getElementById("tble").style.display = 'none';
-        		document.getElementById("sketchpadapp").style.display = 'none';
-			document.getElementById("slide").style.visibility='visible';
-        		}
-			//	var img = document.getElementById('myImageId');
-    			//img.style.visibility = 'visible';
-       	document.slide.src = path[i]; 
-       	ctr++;
-if(i < path.length - 1) i++; 
-else i = 0; 
-setTimeout("swapImage()",300); 
-if (i==0)
-{
-	document.getElementById("slide").style.visibility='hidden';
-}
-        }
+        
 </script>
 	<style>
 	h1 {
