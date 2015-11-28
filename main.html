@@ -74,6 +74,16 @@ function drawImageScaled(img, ctx) {
    	ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.drawImage(img, 0,0,canvas.width,canvas.height);
    tmp = ctx.getImageData(0,0,canvas.width, canvas.height);
+   document.getElementById("menu2").style.display = "block";
+   document.getElementById("menu2").style.visibility="visible";
+   
+   document.getElementById("menu1").style.display = "none";
+   document.getElementById("menu1").style.visibility="hidden";
+   
+   document.getElementById("menu3").style.display = "none";
+   document.getElementById("menu3").style.visibility="hidden";
+   
+   
  //  var d       = ctx.getImageData(0, 0, w, w); //image data 
   }
 function alertDismissed() {
@@ -111,7 +121,17 @@ function capturePhoto() {
 function signPhoto()
 {
 // Get the specific canvas element from the HTML document
-        canvas = document.getElementById('theCanvas');
+       
+       document.getElementById("menu2").style.display = "none";
+   document.getElementById("menu2").style.visibility="hidden";
+   
+   document.getElementById("menu1").style.display = "none";
+   document.getElementById("menu1").style.visibility="hidden";
+   
+   document.getElementById("menu3").style.display = "block";
+   document.getElementById("menu3").style.visibility="visible";
+   
+    canvas = document.getElementById('theCanvas');
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
         if (canvas.getContext)
             ctx = canvas.getContext('2d');
@@ -309,21 +329,24 @@ function clearCanvas() {
 	font-family:Oswald, sans-serif; /*Oswald is available from http://www.google.com/webfonts/specimen/Oswald*/
 	color: #b32d5f;
 	}
-	
+	.menu2,.menu3
+	{
+		display: none;
+		visibility: hidden;
+       }
+	}
   </style>
   </head>
   <body onload="start();" onunload="OnUnLoad ();">
  
 <!-- <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:2px solid">-->
-<table cellspacing="0" cellpadding="0" width="100%">
- <tr><td colspan=5><img src="dg header.png" width="80%" height="80%"></td></tr>
-<tr>
-<td width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="btncss"><img src="gallery.png" width="80%" height="80%"></td>
-<td width="20%"><button onclick="capturePhoto();" class="btncss"><img src="selfie.png" width="80%" height="80%"></button></td>
-<td width="20%"><button onclick="signPhoto();" class="btncss"><img src="sign.png" width="80%" height="80%"> </button></td>
-<td width="20%"><button onclick="showConfirm();" class="btncss" ><img src="share1.png" width="80%" height="80%"></td>
-<td width="20%"><button onclick="clearCanvas();" class="btncss" ><img src="clear.png" width="80%" height="80%"></td></tr>
-</table>
+
+<div id="menu1" class="menu1"><img src="g_icon.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Load Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="s_icon.png"></div>
+<div id="menu2" class="menu2"><img src="sg_icon.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign on Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="c_icon.png"></div>
+<div id="menu3" class="menu3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Share Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="sh_icon.jpg"></div>
+
+
+
 <div id="sketchpadapp">
         <canvas id="theCanvas" class="canvasStyle"></canvas>
 </div>
