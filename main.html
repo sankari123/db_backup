@@ -289,18 +289,7 @@ function clearCanvas() {
         
 </script>
 	<style>
-	h1 {
-	font: italic bold 18px/32px brussels, serif;
-	font-style: italic;
-	text-align: center;
-	color: #000000;
-	padding-top: 1px ;
-	text-shadow: 1px 1px 2px #fff; 
-	width:100%;
-	}
-	<!--
-a { text-decoration : none; color : #000; }
--->
+	
 	.sketchpadapp {
 	border: 0px solid gray;
 	position: fixed;
@@ -326,13 +315,13 @@ a { text-decoration : none; color : #000; }
   <body onload="start();" onunload="OnUnLoad ();" style="height: 100%; width:"100%;">
   <!--<p align=right><button onclick="swapImage();" class="btncss">Demo</button></p>-->
 <!--<img id="slide" type="hidden" />-->
- <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:1px solid">
+ <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:2px solid">
 <tr><td colspan=2 align="center"><img src="dg header.png" height="50%" width="50%"></td></tr>
-<tr><td width="2%" valign="middle"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img src="gallery.png"></button></td><td rowspan=5 width="98%"><canvas id="theCanvas"></canvas></td></tr>
-<tr><td width="2%" valign="middle"><button onclick="capturePhoto();"><img src="selfie.png"></button></td></tr>
-<tr><td width="2%" valign="middle"><button onclick="signPhoto();"><img src="sign.png"> </button></td></tr>
-<tr><td width="2%" valign="middle"><button onclick="showConfirm();"><img src="share1.png"> </button></td></tr>
-<tr><td width="2%" valign="middle"><button onclick="clearCanvas();"><img src="clear.png"> </button></td></tr>
+<tr><td width="1%" valign="middle"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img src="gallery.png" height="50%" width="50%"></button></td><td rowspan=5 width="99%"><canvas id="theCanvas"></canvas></td></tr>
+<tr><td width="2%" valign="middle"><button onclick="capturePhoto();"><img src="selfie.png" height="50%" width="50%"></button></td></tr>
+<tr><td width="2%" valign="middle"><button onclick="signPhoto();"><img src="sign.png" height="50%" width="50%"> </button></td></tr>
+<tr><td width="2%" valign="middle"><button onclick="showConfirm();"><img src="share1.png" height="50%" width="50%"> </button></td></tr>
+<tr><td width="2%" valign="middle"><button onclick="clearCanvas();"><img src="clear.png" height="50%" width="50%"> </button></td></tr>
 <!--<tr><td colspan=5 align="right"><a href="#" onclick="showConfirm(); return false;">Share</a></td></tr>-->
 </table>
 </body>
