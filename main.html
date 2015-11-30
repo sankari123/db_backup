@@ -109,9 +109,8 @@ function capturePhoto() {
         destinationType: destinationType.DATA_URL,correctOrientation: true });
     }
     function getPhoto(source) {
-      clearCanvas_1();
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,sourceType: source });
+   //   clearCanvas_1();
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,destinationType: destinationType.FILE_URI,sourceType: source });
     }
     // Called if something bad happens.
     //
@@ -347,7 +346,7 @@ function clearCanvas() {
 <!--<div id="hr1" style="position:fixed;text-align:center;padding-left:30px;padding-right:30px;><img src="dg header.png"></div>-->
 <div id="menu1" class="menu1" style="position:relative;width:100%;left: 0px;z-index: -1;background-color: #00343a;">
 	<table border=0 cellspacing=0 cellpadding=0 width="100%">
-		<tr><td align="left" width='20%'><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img src="https://cloud.githubusercontent.com/assets/14199766/11465667/a70fe872-9760-11e5-9d06-0d70af4a5659.png" align="left"></button></td>
+		<tr><td align="left" width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img src="https://cloud.githubusercontent.com/assets/14199766/11465667/a70fe872-9760-11e5-9d06-0d70af4a5659.png" align="left"></button></td>
 		<td align=center width='60%'><font color="#ffffff"><i></i>Load Image</i></font></td>
 		<td align=right width='20%'><button onclick="capturePhoto();"><img src="https://cloud.githubusercontent.com/assets/14199766/11465666/a708fbf2-9760-11e5-8c7e-2fd376317a0d.png" align="right"></button></td>
 		</tr></table></div>
