@@ -346,12 +346,11 @@ html,body{
     width:100%;
 			}
 			body{
-				background-color: transparent; 
 				overflow: hidden;
 				font-family: "Helvetica";
 					
 					font-weight:bold;
-    display:table;
+    
 					}
 
 			
@@ -364,6 +363,11 @@ html,body{
                         vertical-align:middle;
     display:table-cell;
 					}
+					.hdd {
+    margin: auto;
+    width: 100%;
+   
+}
   </style>
   </head>
   <body onload="start();" onunload="OnUnLoad();">
@@ -371,7 +375,7 @@ html,body{
 <!-- <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:2px solid">-->
 
 
-	<div id="hd1" style="width:100%;left: 0px;">
+	<div id="hd1" class="hdd">
 		<table border=0 cellspacing=0 cellpadding=0 width="100%" align="center" bgcolor="#808080">
 		<tr><td>	
 	<img src="dg header.png" width="80%" height="80%"></td></tr></table></div>
@@ -380,7 +384,7 @@ html,body{
 <div id="menu1" class="menu1" style="width:100%;left: 0px;">
 	<table border=0 cellspacing=0 cellpadding=0 width="100%">
 		<tr><td align="left" width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img src="https://cloud.githubusercontent.com/assets/14199766/11612767/1105e6fc-9c2d-11e5-8265-b70c0e221c5a.png" align="left"></button></td>
-		<td align=center width='60%'><font color="#ffffff"><i></i>Load Image</i></font></td>
+		<td align=center width='60%'>Load Image</td>
 		<td align=right width='20%'><button onclick="capturePhoto();"><img src="https://cloud.githubusercontent.com/assets/14199766/11612768/110d4668-9c2d-11e5-8b33-996e8722aecd.png" align="right"></button></td>
 		</tr></table></div>
 <div id="menu2" class="menu2" style="width:100%;left: 0px;">
