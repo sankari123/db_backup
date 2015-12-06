@@ -338,12 +338,35 @@ function clearCanvas() {
    text-align: center;
   
 }
+body{
+                margin: 0; /* There is no margin, padding or border on html, only margin: 8px; on body... */
+                background-color: #FFFFFF; /* Why transparent? Changed to white... */ 
+                font-family: "Helvetica";
+                color: #359115;
+                font-weight: bold;
+            }
+            #wrapper {
+                position: relative;
+                width: 50%;
+                margin: auto;
+                text-align: center;
+            }
+            #container {
+                background-color: #dddddd;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
   </style>
   </head>
   <body onload="start();" onunload="OnUnLoad();">
  
 <!-- <table style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:2px solid">-->
-<div id="hr1" class="hdr"><img src="dg header.png"></div>
+
+<div id="wrapper">
+	<div id="container" align="center">
+		<img src="dg header.png"></div>
+		</div>
 <!--<div id="menu1" class="menu1" style="width:100%;left:0px;z-index:-1;background-color: #00343a;">-->
 <div id="menu1" class="menu1" style="width:100%;left: 0px;">
 	<table border=0 cellspacing=0 cellpadding=0 width="100%">
