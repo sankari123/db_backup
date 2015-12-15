@@ -282,6 +282,16 @@ function onConfirm(buttonIndex) {
     
 	}
 }
+function gotoHomePage()
+{
+	var c=document.getElementById("theCanvas");
+	var ctx=c.getContext("2d");
+	//ctx.clearRect(20,20,100,50);
+	  
+       ctx.clearRect(0, 0, c.width, c.height);
+	
+	
+}
 function clearCanvas() {
 	var c=document.getElementById("theCanvas");
 	var ctx=c.getContext("2d");
@@ -334,7 +344,7 @@ function clearCanvas() {
 		<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center">
 		<tr><td align="center">	
 	<img src="https://cloud.githubusercontent.com/assets/14199766/11762441/545b9e72-a10c-11e5-9eca-199b3b71b615.png">
-	</td><td align="right"><img src=""></td></tr></table></div>
+	</td><td align="right"><button onclick="gotoHomePage();"><img src="https://cloud.githubusercontent.com/assets/14199766/11805352/2d666b0e-a2c8-11e5-9b64-a999ec9bd24e.png"></button></td></tr></table></div>
 <div id="menu1" class="menu1" class="hdd">
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 		<tr><td align="left" width="20%"><button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img src="https://cloud.githubusercontent.com/assets/14199766/11762646/2594f5b4-a113-11e5-92f3-cf7a65a7091e.png" align="left"></button></td>
