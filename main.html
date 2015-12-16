@@ -284,7 +284,18 @@ function onConfirm(buttonIndex) {
 }
 function gotoHomePage()
 {
-	var c=document.getElementById("theCanvas");
+
+document.getElementById("menu2").style.display = "none";
+   document.getElementById("menu2").style.visibility="hidden";
+   
+   document.getElementById("menu3").style.display = "none";
+   document.getElementById("menu3").style.visibility="hidden";
+   
+   document.getElementById("menu1").style.display = "block";
+   document.getElementById("menu1").style.visibility="visible";
+   
+   
+   var c=document.getElementById("theCanvas");
 	var ctx=c.getContext("2d");
 	//ctx.clearRect(20,20,100,50);
 	  
@@ -349,13 +360,13 @@ function clearCanvas() {
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 		<tr><td align="left" width="15%"><img src="g1.png" align="left" onclick=getPhoto(pictureSource.PHOTOLIBRARY);></td>
 		<td align="center" width='70%'><font face="pristina" size="3" color="#005c59">Load Image</font></td>
-		<td align="right" width='15%'><img src="s1.png" align="right" onclick="capturePhoto();"></td>
+		<td align="right" width='15%'><img src="se1.png" align="right" onclick="capturePhoto();"></td>
 		</tr></table>
 		</div>
 <div id="menu2" class="menu2" style="width:100%;left: 0px;">
 		<tr><td align="left" width='15%'><img src="si1.png" align="left" onclick="signPhoto();"></td>
 		<td align="center" width="70%">Sign on Image</td>
-		<td align="right" width='15%'><img src="c1.png" align="right" onclick="clearCanvas();"></td>
+		<td align="right" width='15%'><img src="cl1.png" align="right" onclick="clearCanvas();"></td>
 		</tr></table></div>
 <div id="menu3" class="menu3" style="width:100%;left: 0px;">
 	<table border=0 cellspacing=0 cellpadding=0 width="100%">
