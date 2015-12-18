@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>TestDigiGraph</name>
-  <description>TestDigiGraph</description>
+  <name>DG with Text Menus</name>
+  <description>DG with Text Menus</description>
   <author href="http://www.appcorridor.com" email="write2sankari@gmail.com">Sivasankari</author>
   <content src="index.html"/>
   <feature name="Notification">
