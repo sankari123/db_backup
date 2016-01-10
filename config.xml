@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.appcorridor.digigraph" version="1.0.0">
   <name>DigiGraph</name>
   <description>DigiGraph</description>
   <author href="http://www.appcorridor.com" email="write2sankari@gmail.com">Sivasankari</author>
