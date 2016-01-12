@@ -105,6 +105,7 @@ function alertDismissed() {
    
    
 function capturePhoto() {
+document.body.style.backgroundImage='none';
 	document.getElementById("sketchpadapp").style.display = "block";
    document.getElementById("sketchpadapp").style.visibility="visible";
      clearCanvas_1();
@@ -358,7 +359,18 @@ function OpenPopupCenter(pageURL, title, w, h) {
         } 
 </script>
 	<style>
-	
+	html {
+  background-color: transparent;
+}
+
+
+
+body {
+  background-image: url("d1.png");
+ 
+}
+
+
 	.sketchpadapp {
          position: fixed;
 	}
@@ -379,7 +391,7 @@ function OpenPopupCenter(pageURL, title, w, h) {
   </style>
   </head>
   <body onload="start();" onunload="OnUnLoad();">
- <div id="popUpDiv" style="display:none">
+  	 <div id="popUpDiv" style="display:none">
 
 <a href="#" onclick="popup('popUpDiv')" >Close</a>
 </div>
