@@ -233,14 +233,14 @@ function signPhoto()
     }
     function theCanvas_touchEnd() {
         // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
-        event.preventDefault();
-        lastPt={x:event.touches[0].pageX,y:event.touches[0].pageY};
+       // event.preventDefault();
+       // lastPt={x:event.touches[0].pageX,y:event.touches[0].pageY};
         lastX=-1;
         lastY=-1;
-        lastPt=null;
-        if (!e)
-                e = event;
-            len = e.targetTouches.length;
+       // lastPt=null;
+        //if (!e)
+          //      e = event;
+           // len = e.targetTouches.length;
     }
     // Draw something and prevent the default scrolling when touch movement is detected
     function theCanvas_touchMove(e) { 
